@@ -1,0 +1,77 @@
+/* ================= MiVibra PC 2 · shell ================= */
+.brand small{letter-spacing:1.6px}
+#modes{display:flex;flex-direction:column;gap:6px;padding:0 0 12px;margin-bottom:8px;border-bottom:1px solid var(--line)}
+.mode{display:flex;align-items:center;gap:11px;width:100%;padding:9px 10px;border-radius:14px;border:1px solid transparent;background:transparent;color:var(--txt2);cursor:pointer;text-align:left;transition:background .15s,border-color .15s}
+.mode:hover{background:#1A1715}
+.mode .mi{width:36px;height:36px;border-radius:11px;background:var(--card2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--mut);transition:background .15s,color .15s}
+.mode .mt{display:flex;flex-direction:column;min-width:0}
+.mode b{font-family:var(--fb);font-size:15px;color:var(--txt);font-weight:700}
+.mode small{font-size:11.5px;color:var(--mut)}
+.mode.on{background:linear-gradient(90deg,rgba(255,105,0,.16),rgba(255,105,0,.04));border-color:rgba(255,105,0,.35)}
+.mode.on .mi{background:var(--or);color:var(--ink)}
+.mode.on b{color:#fff}
+/* el menú del diagnóstico con el mismo estilo que el del instalador */
+.nav{padding:8px 12px;min-height:38px;border-radius:11px;font-size:14px;gap:11px;font-weight:400}
+.nav svg{width:17px;height:17px;color:var(--mut)}
+.nav.on{font-weight:600}.nav.on svg{color:var(--or)}
+body[data-mode="diag"] .toast{bottom:28px}
+/* tarjetas que conectan los dos módulos */
+.xcard{display:block;width:100%;text-align:left;background:linear-gradient(135deg,#17120E,#141210);border:1px solid #33281F;border-radius:20px;padding:16px 18px;margin:0 0 6px;color:var(--txt)}
+.xcard.xs{display:flex;align-items:center;gap:14px;flex-wrap:wrap;cursor:default}
+button.xcard.xs{cursor:pointer}button.xcard.xs:hover{border-color:var(--line2)}
+.xcard b{display:block;font-family:var(--fb);font-size:16px;color:#fff}
+.xcard small{display:block;font-size:12.5px;color:var(--mut);margin-top:1px}
+.xh{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.xi{width:40px;height:40px;border-radius:12px;background:var(--orbg);color:var(--or2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.xlist{margin-top:12px;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.xr{display:flex;align-items:center;gap:12px;padding:10px 2px;border-bottom:1px solid #221E1B}
+.xr:last-child{border-bottom:0}
+.xr b{font-family:var(--fu);font-size:14px;font-weight:600}
+.grade{width:46px;height:46px;border-radius:14px;border:2px solid;display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-weight:800;font-size:24px;flex-shrink:0}
+#recs:not(:empty){margin-top:22px}
+#xhealth{margin:-8px 0 8px}
+@media (max-width:900px){#modes{align-items:center}.mode{justify-content:center;padding:8px}.mode .mt{display:none}}
+/* ---------- antivirus ---------- */
+.avhero{display:flex;align-items:center;gap:20px;flex-wrap:wrap;border-radius:24px;padding:22px 24px;border:1px solid color-mix(in srgb,var(--c) 40%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--c) 12%,#141210),#131110 60%)}
+.avshield{width:84px;height:84px;border-radius:24px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--c) 14%,transparent);flex-shrink:0}
+.avhero b{display:block;font-family:var(--fb);font-size:22px;color:#fff}
+.avhero small{display:block;color:var(--txt2);font-size:13.5px;margin-top:2px}
+.avfacts{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.avfacts span{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+.avdanger{background:#DC2626;color:#fff}.avdanger:hover{background:#EF4444}
+.avkinds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.avk{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.avk .ki{width:42px;height:42px;border-radius:13px;background:var(--orbg);color:var(--or2);display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.avk b{font-family:var(--fb);font-size:17px;color:#fff}
+.avk p{font-size:13px;line-height:19px;color:var(--mut);flex:1}
+.avk input{height:40px;border-radius:12px;border:1px solid var(--line);background:var(--card2);color:var(--txt);padding:0 12px;font-size:12.5px;width:100%}
+.avk input:focus{outline:none;border-color:var(--or)}
+.avk .b{margin-top:8px}
+.avchips{display:flex;flex-wrap:wrap;gap:5px}
+.avchips .chip-s{border:0;cursor:pointer;font-size:11px}.avchips .chip-s:hover{color:#fff;background:var(--line2)}
+.avrun{background:var(--card);border:1px solid rgba(255,105,0,.4);border-radius:22px;padding:20px 22px;margin-top:16px}
+.avrun b{display:block;font-family:var(--fb);font-size:18px;color:#fff}
+.avrun small{color:var(--mut);font-size:13px}
+.avfound{text-align:center;padding:6px 16px;border-radius:14px;background:var(--card2)}
+.avfound b{font-size:26px;line-height:1}.avfound.bad{background:var(--badbg)}.avfound.bad b{color:var(--badt)}
+.avbar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:16px;position:relative}
+.avbar i{position:absolute;top:0;bottom:0;width:30%;border-radius:99px;background:var(--or);animation:avb 1.6s ease-in-out infinite}
+@keyframes avb{0%{left:-30%}100%{left:100%}}
+.li.avt{align-items:flex-start;flex-wrap:wrap}
+.li.avt .tx{min-width:240px;gap:2px}
+.li.avt.act{background:rgba(248,113,113,.06)}
+.avi{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--card2);color:var(--mut)}
+.avi.bad{background:var(--badbg);color:var(--badt)}.avi.ok{background:var(--okbg);color:var(--okt)}.avi.warn{background:var(--warnbg);color:var(--warnt)}
+@media (max-width:1000px){.avkinds{grid-template-columns:1fr}}
+/* ---------- actualizaciones ---------- */
+.verb{background:none;border:0;padding:2px 0;font-family:var(--fm);font-size:11px;color:var(--mut);cursor:pointer;text-align:left;align-self:flex-start}
+.verb:hover{color:var(--txt);text-decoration:underline;text-underline-offset:3px}
+#upd:empty{display:none}
+#upd{display:flex;flex-direction:column;gap:6px}
+.ucard{display:flex;align-items:center;gap:10px;padding:10px;border-radius:14px;background:linear-gradient(135deg,rgba(255,105,0,.18),rgba(255,105,0,.05));border:1px solid rgba(255,105,0,.4)}
+.ucard b{display:block;font-size:13px;color:#fff}.ucard small{display:block;font-size:11.5px;color:var(--txt2)}
+.ui{width:28px;height:28px;border-radius:9px;background:var(--or);color:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+#upd .lnk.sm{align-self:center}
+.unotes{margin:8px 0 0 18px;display:flex;flex-direction:column;gap:5px;color:var(--txt2);font-size:14px}
+.closed .spin{margin-bottom:6px}
+@media (max-width:900px){#upd .ucard .grow,#upd .lnk{display:none}.ucard{justify-content:center;padding:6px}}

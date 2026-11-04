@@ -1,0 +1,3 @@
+- Actualización automática: MiVibra PC descarga, verifica e instala las versiones nuevas solo
+- Antivirus con el motor de Microsoft Defender: escaneo rápido, completo o de carpeta/USB y eliminación de amenazas
+- Logo propio en la barra de tareas

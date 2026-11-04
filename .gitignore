@@ -1,0 +1,8 @@
+*.syso
+*.nuevo
+*.nuevo.json
+*.viejo
+/MiVibra-PC.exe
+/MiVibra-PC/
+/i.js
+/inst-linux

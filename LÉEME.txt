@@ -1,0 +1,102 @@
+MiVibra PC 2 — diagnóstico del equipo + instalador de programas (estilo WPI)
+===========================================================================
+
+Una sola app con dos módulos (se cambia arriba a la izquierda):
+
+DIAGNÓSTICO
+  Resumen con calificación A/B/C del equipo, hardware (procesador, RAM, discos SMART, batería,
+  pantallas, red), estado de Windows (activación, actualizaciones, antivirus, errores, pantallazos),
+  pruebas interactivas (teclado, pantalla, audio, micrófono, cámara, mouse, USB), pruebas de
+  rendimiento, limpieza y un informe para el cliente.
+  NUEVO: "Programas que ayudan con lo encontrado" — según los problemas detectados, recomienda
+  herramientas del instalador (p. ej. Memtest86+ si hubo pantallazos azules, CrystalDiskInfo si el
+  disco tiene fallas) y las deja marcadas con un clic.
+
+ANTIVIRUS (nuevo en 2.1, dentro de Diagnóstico)
+  Usa el motor de Microsoft Defender que ya trae Windows: escaneo rápido, completo o de una
+  carpeta/USB, actualización de la base de virus, historial de amenazas con su gravedad y estado,
+  "Eliminar amenazas" para las activas y "Restaurar" para falsos positivos en cuarentena.
+  "Escaneo sin conexión" reinicia el equipo y busca rootkits antes de que arranque Windows.
+  Windows pide permiso de administrador para escanear y eliminar.
+  Si hay otro antivirus instalado (Avast, Kaspersky, etc.), Defender queda apagado y hay que
+  usar ese antivirus; la app lo indica.
+
+INSTALADOR
+  Cada programa trae una descripción corta de para qué sirve, también los de tu carpeta
+  (3uTools, drivers Samsung/MTK/Qualcomm, Realtek, NVIDIA, Office, etc.). Si alguno no la
+  tiene, o quieres cambiarla, usa el botón "···" del programa → "Para qué sirve".
+  En el Inicio del instalador ves el estado del equipo y puedes marcar los recomendados.
+
+SI YA USABAS MiVibra Instalador
+  Copia MiVibra-PC.exe dentro de tu carpeta MiVibra-Instalador (junto a "Instaladores" y
+  programas.json): conservas tus instaladores, kits y ajustes. Puedes borrar el .exe viejo.
+
+CÓMO SE USA
+1. Copia esta carpeta completa donde quieras (USB, disco externo, escritorio).
+2. Pon tus instaladores (.exe, .msi, .msix) dentro de "Instaladores".
+   Cada subcarpeta es una categoría: Instaladores\Drivers\Realtek.exe -> categoría "Drivers".
+3. Abre MiVibra-PC.exe, entra a "Instalador", marca los programas y pulsa "Instalar".
+   Windows pide permiso de administrador UNA sola vez y todo se instala en fila.
+
+INSTALACIÓN SILENCIOSA
+La app reconoce el tipo de instalador y usa sus parámetros silenciosos:
+  MSI ............... /qn /norestart
+  Inno Setup ........ /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-
+  NSIS .............. /S
+  InstallShield ..... /s /v"/qn /norestart"
+  WiX (Burn) ........ /quiet /norestart
+  Advanced Installer  /exenoui /qn /norestart
+Si no lo reconoce, lo instala en modo "Normal" (con sus ventanas). En el botón "..." de cada
+programa puedes cambiar nombre, categoría, modo y parámetros.
+
+CATÁLOGO EN LÍNEA (winget)
+Incluye más de 50 programas comunes y un buscador con miles más. Requiere internet y
+"Instalador de aplicación" (winget), que ya trae Windows 10/11 actualizado.
+"Descargar al kit" guarda el instalador en tu carpeta para usarlo después SIN internet.
+
+SOFTWARE LIBRE EN GITHUB (ampliado en 1.3)
+La sección "GitHub (libre)" trae 95 programas de código abierto, elegidos entre los mejor calificados
+(más estrellas) de GitHub que publican versión para Windows, ordenados por estrellas (se actualizan en vivo):
+  Celulares y USB ...... scrcpy, QtScrcpy, Escrcpy, Universal Android Debloater, LocalSend, balenaEtcher,
+                         Raspberry Pi Imager
+  Hardware y sistema ... TrafficMonitor, Sandboxie-Plus, System Informer, OpenHashTab, Libre Hardware Monitor,
+                         Bulk Crap Uninstaller, Driver Store Explorer, Open-Shell, Mem Reduct, Twinkle Tray
+  USB de rescate ....... Memtest86+ (prueba de RAM), Rescuezilla (clonar y recuperar discos)
+  Herramientas ......... QuickLook, Flow Launcher, Espanso, Flameshot, ScreenToGif, PeaZip, File Converter,
+                         WinMerge, Motrix, AutoHotkey
+  Oficina y notas ...... ONLYOFFICE, AppFlowy, Joplin, SiYuan, Logseq, MarkText, KeePassXC
+  Comunicación ......... Ferdium (WhatsApp, Telegram, Gmail e Instagram en una ventana)
+  Libros ............... Koodo Reader, Thorium Reader
+  Multimedia y diseño .. Upscayl, HandBrake, FreeCAD, MuseScore, LMMS, ImageGlass, Pinta, MPC-HC, Shotcut,
+                         darktable, Jellyfin Media Player
+  IA en tu PC .......... Ollama, GPT4All, Cherry Studio, Jan, Buzz, ComfyUI, Stability Matrix
+  Desarrollo ........... Neovim, Zed, nvm for Windows, DevToys, Insomnia, Beekeeper Studio, Podman Desktop,
+                         Tabby, Alacritty, PowerShell 7, ImHex, DBeaver, Bruno, VSCodium, HeidiSQL
+  Personalizar Windows . Windhawk, Lively Wallpaper, Rainmeter, Nilesoft Shell
+  Juegos ............... Sunshine, Moonlight, Playnite, Heroic Games Launcher, Prism Launcher
+  Navegadores .......... Zen Browser
+  ArtCraft ............. el Launcher y sus 12 apps (PhotoCraft, PdfCraft, VectorCraft…)
+
+KIT USB DE RESCATE
+Prepara una USB con Ventoy (está en Herramientas técnicas). En "USB de rescate", "Instalar" guarda la
+imagen .iso en Instaladores\USB de rescate y, si la USB Ventoy está conectada, la copia ahí. Luego
+arrancas el equipo desde la USB y eliges Memtest86+ o Rescuezilla en el menú.
+
+Siempre se instala la última versión ESTABLE publicada por el proyecto, eligiendo el archivo según el
+procesador (x64, x86 o ARM64) y verificando su huella SHA-256 cuando el proyecto la publica.
+Los programas "Portable" (scrcpy, QtScrcpy, Debloater, TrafficMonitor, Libre Hardware Monitor,
+Driver Store Explorer, Stability Matrix) no tienen
+instalador: quedan en C:\Program Files\MiVibra Portables con acceso directo en el menú Inicio.
+GitHub permite 60 consultas por hora sin cuenta: la app solo consulta lo que estás viendo y guarda
+los resultados 6 horas. Si aparece "GitHub ocupado", espera unos minutos.
+Programas libres que ya estaban en winget (PowerToys, RustDesk, OBS, Audacity, ShareX, Rufus,
+Ventoy, Notepad++, Git) siguen en su categoría de siempre para no repetirlos.
+
+PERFILES
+Marca programas y pulsa "Guardar perfil" (Básico, Oficina, Técnico, Gamer, Taller celulares (libre),
+Técnico libre o los tuyos).
+Todo se guarda en programas.json, junto al .exe.
+
+NOTAS
+- Windows SmartScreen puede advertir que el programa no está firmado: "Más información" -> "Ejecutar de todas formas".
+- Usa solo instaladores descargados de las páginas oficiales de cada fabricante.

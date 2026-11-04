@@ -1,0 +1,14 @@
+MiVibra PC 2 — código fuente (Go + interfaz web incrustada)
+
+Une dos módulos en una sola app:
+  Diagnóstico  scripts.go (PowerShell), pc_windows.go, bench.go, diskio_*.go, clean.go, pc_routes.go
+  Instalador   catalog.go, github.go, portable.go, scan.go, descs.go, winget.go, job.go, config.go
+main.go      servidor local con token, rutas del instalador y modo --runner (proceso elevado)
+sys_windows.go / sys_other.go / pc_other.go   Windows real / simulación para probar fuera de Windows
+src/         interfaz: shell.js (selector Diagnóstico/Instalador y recomendaciones cruzadas),
+             diag_mod.js, inst_mod.js, base.css, inst.css, shell.css; build/assemble.py genera ui/index.html
+
+Compilar:
+  python3 build/assemble.py
+  GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -ldflags "-H windowsgui -s -w" -o MiVibra-PC.exe .
+Probar la interfaz:  MIVIBRA_NO_WINDOW=1 MIVIBRA_DIR=/ruta/de/prueba go run .
