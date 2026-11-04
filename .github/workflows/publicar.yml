@@ -23,7 +23,8 @@ jobs:
         run: python3 build/assemble.py
       - name: Ícono y manifiesto
         run: |
-          sed -i -E "s/version=\"[0-9.]+\"/version=\"${VER}.0\"/" build/mivibra.manifest
+          sed -i -E "/<assemblyIdentity/ s/ version=\"[0-9.]+\"/ version=\"${VER}.0\"/" build/mivibra.manifest
+          python3 -c "import xml.dom.minidom,sys; d=xml.dom.minidom.parse('build/mivibra.manifest'); v=d.getElementsByTagName('assemblyIdentity')[0].getAttribute('version'); print('manifiesto', v); sys.exit(0 if v=='${VER}.0' and d.version in (None,'1.0') else 1)"
           go run github.com/akavel/rsrc@v0.10.2 -manifest build/mivibra.manifest -ico build/mivibra.ico -arch amd64 -o rsrc_windows_amd64.syso
       - name: Pruebas
         run: go test ./...
